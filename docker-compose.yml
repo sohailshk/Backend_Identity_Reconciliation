@@ -1,0 +1,28 @@
+# Docker Compose configuration for Contact Reconciliation Service
+
+services:
+  # FastAPI Contact Reconciliation Service
+  contact-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: contact-reconciliation-api
+    ports:
+      # Map host port 8000 to container port 8000
+      - "8000:8000"
+    environment:
+      # Database configuration
+      - DATABASE_URL=sqlite:///contacts.db
+      - PYTHONPATH=/app/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Create named volume for database persistence (alternative to bind mount)
+volumes:
+  contact_data:
+    driver: local
