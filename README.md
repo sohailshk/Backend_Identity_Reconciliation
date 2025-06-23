@@ -1,7 +1,7 @@
 # Contact Reconciliation Service
 
-[![CI/CD Pipeline](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/actions/workflows/ci-cd.yml)
-[![Docker Image](https://img.shields.io/docker/v/YOUR_DOCKER_USERNAME/contact-reconciliation-api?label=docker&logo=docker)](https://hub.docker.com/r/YOUR_DOCKER_USERNAME/contact-reconciliation-api)
+[![CI/CD Pipeline](https://github.com/sohailshk/Backend_Identity_Reconciliation/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/sohailshk/Backend_Identity_Reconciliation/actions/workflows/ci-cd.yml)
+[![Docker Image](https://img.shields.io/docker/v/sohailshk/contact-reconciliation-api?label=docker&logo=docker)](https://hub.docker.com/r/sohailshk/contact-reconciliation-api)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -353,13 +353,12 @@ This project includes a comprehensive GitHub Actions CI/CD pipeline that:
      - `DOCKER_USERNAME`: Your Docker Hub username
      - `DOCKER_PASSWORD`: Your Docker Hub access token
 
-3. **Update badge URLs** in README.md:
-   ```markdown
-   # Replace YOUR_USERNAME and YOUR_REPO_NAME with actual values
-   [![CI/CD Pipeline](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/actions/workflows/ci-cd.yml/badge.svg)]
+3. **Update badge URLs** in README.md:   ```markdown
+   # Replace with your actual GitHub details
+   [![CI/CD Pipeline](https://github.com/sohailshk/Backend_Identity_Reconciliation/actions/workflows/ci-cd.yml/badge.svg)]
    
-   # Replace YOUR_DOCKER_USERNAME with your Docker Hub username
-   [![Docker Image](https://img.shields.io/docker/v/YOUR_DOCKER_USERNAME/contact-reconciliation-api?label=docker&logo=docker)]
+   # Replace with your Docker Hub username
+   [![Docker Image](https://img.shields.io/docker/v/sohailshk/contact-reconciliation-api?label=docker&logo=docker)]
    ```
 
 4. **Trigger the pipeline**:
@@ -380,13 +379,13 @@ The Docker images are automatically built and pushed to Docker Hub on every tagg
 
 ```bash
 # Pull the latest version
-docker pull YOUR_DOCKER_USERNAME/contact-reconciliation-api:latest
+docker pull sohailshk/contact-reconciliation-api:latest
 
 # Or pull a specific version
-docker pull YOUR_DOCKER_USERNAME/contact-reconciliation-api:v0.1.0
+docker pull sohailshk/contact-reconciliation-api:v0.1.0
 
 # Run the container
-docker run -p 8000:8000 YOUR_DOCKER_USERNAME/contact-reconciliation-api:latest
+docker run -p 8000:8000 sohailshk/contact-reconciliation-api:latest
 ```
 
 ## Troubleshooting
