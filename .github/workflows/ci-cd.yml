@@ -23,9 +23,8 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ env.PYTHON_VERSION }}
-        
-    - name: Cache pip dependencies
-      uses: actions/cache@v3
+          - name: Cache pip dependencies
+      uses: actions/cache@v4
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -90,14 +89,11 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         platforms: linux/amd64,linux/arm64
-        
-    - name: Create GitHub Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.extract_version.outputs.version }}
-        release_name: Release ${{ steps.extract_version.outputs.version }}
+        name: Release ${{ steps.extract_version.outputs.version }}
         body: |
           ## Changes in ${{ steps.extract_version.outputs.version }}
           
@@ -134,9 +130,8 @@ jobs:
       
     - name: Run bandit security scan
       run: bandit -r app/ -f json -o bandit-report.json || true
-      
-    - name: Upload security scan results
-      uses: actions/upload-artifact@v3
+        - name: Upload security scan results
+      uses: actions/upload-artifact@v4
       with:
         name: security-scan-results
         path: bandit-report.json
