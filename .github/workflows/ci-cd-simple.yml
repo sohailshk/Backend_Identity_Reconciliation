@@ -9,7 +9,7 @@ on:
 
 env:
   DOCKER_IMAGE_NAME: contact-reconciliation-api
-  PYTHON_VERSION: '3.12'
+  PYTHON_VERSION: '3.13'
 
 jobs:
   build-and-test:
