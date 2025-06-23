@@ -1,6 +1,6 @@
 # Multi-stage Dockerfile for Contact Reconciliation Service
 # Stage 1: Builder - Install dependencies
-FROM python:3.11-slim as builder
+FROM python:3.12-slim as builder
 
 # Set working directory for builder stage
 WORKDIR /app
@@ -8,16 +8,18 @@ WORKDIR /app
 # Install system dependencies for building Python packages
 RUN apt-get update && apt-get install -y \
     gcc \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
 # Copy requirements file
 COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir --user -r requirements.txt
+# Install Python dependencies with latest pip
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir --user -r requirements.txt
 
 # Stage 2: Final - Runtime image
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # Set working directory
 WORKDIR /app
