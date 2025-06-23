@@ -2,9 +2,10 @@
 Database configuration and session management for Contact Reconciliation Service.
 """
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
 import os
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 # SQLite database URL - uses environment variable or default
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./contacts.db")
@@ -12,9 +13,9 @@ DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./contacts.db")
 # Create SQLAlchemy engine
 # check_same_thread=False is needed for SQLite to work with multiple threads
 engine = create_engine(
-    DATABASE_URL, 
+    DATABASE_URL,
     connect_args={"check_same_thread": False},
-    echo=False  # Set to True for debugging
+    echo=False,  # Set to True for debugging
 )
 
 # Create sessionmaker for database sessions
